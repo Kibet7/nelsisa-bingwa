@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingwa Sokoni - Mobile Bundles, Minutes & SMS</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .promo-banner {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab.active {
+            background-color: #3498db;
+            color: white;
+        }
+        .offer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .offer-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .offer-card:hover {
+            transform: translateY(-5px);
+        }
+        .offer-name {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .offer-price {
+            color: #e74c3c;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .offer-details {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        .buy-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        .buy-btn:hover {
+            background-color: #2ecc71;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        .payment-instructions {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 5px solid #3498db;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        .copy-btn {
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        .copy-btn:hover {
+            background-color: #e67e22;
+        }
+        .till-number {
+            font-weight: bold;
+            color: #2c3e50;
+            background-color: #f1f1f1;
+            padding: 2px 5px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+        .success-message {
+            color: #27ae60;
+            font-size: 12px;
+            margin-left: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">BINGWA SOKONI</div>
+        <div>Affordable Data Bundles, Minutes & SMS</div>
+    </header>
+
+    <div class="promo-banner">
+        RECEIVE ANY OFFER EVEN IF YOU HAVE OKOA JAHAZI OR FULIZA!
+    </div>
+
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" onclick="openTab('data')">Data Bundles</div>
+            <div class="tab" onclick="openTab('minutes')">Voice Minutes</div>
+            <div class="tab" onclick="openTab('sms')">SMS Offers</div>
+        </div>
+
+        <div id="data" class="tab-content">
+            <h2>Data Bundles</h2>
+            <div class="offer-container">
+                <div class="offer-card">
+                    <div class="offer-name">1 Hour bundle</div>
+                    <div class="offer-price">KSh 19</div>
+                    <div class="offer-details">1GB</div>
+                    <button class="buy-btn" onclick="openModal('Hourly Bundle', '19')">Buy Now</button>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-name">24 Hours Bundle</div>
+                    <div class="offer-price">KSh 20</div>
+                    <div class="offer-details">250MB  (1 day)</div>
+                    <button class="buy-btn" onclick="openModal('1 Day', '20')">Buy Now</button>
+                </div>                
+                <div class="offer-card">
+                    <div class="offer-name">3 Hour Bundle</div>
+                    <div class="offer-price">KSh 50</div>
+                    <div class="offer-details">1.5GB </div>
+                    <button class="buy-btn" onclick="openModal('3 Hour Bundle', '50')">Buy Now</button>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-name">Weekly Bundle</div>
+                    <div class="offer-price">KSh 49</div>
+                    <div class="offer-details">350MB </div>
+                    <button class="buy-btn" onclick="openModal('weekly Bundle', '49')">Buy Now</button>
+                </div>
+                    <div class="offer-card">
+                    <div class="offer-name">Midnight Bundles</div>
+                    <div class="offer-price">KSh 55</div>
+                    <div class="offer-details">1.25GB </div>
+                    <button class="buy-btn" onclick="openModal('Midnight Bundle', '55')">Buy Now</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="minutes" class="tab-content" style="display:none;">
+            <h2>Voice Minutes</h2>
+            <div class="offer-container">
+                <div class="offer-card">
+                    <div class="offer-name">51 Minutes (TILL MIDNIGHT) </div>
+                    <div class="offer-price">KSh 50</div>
+                    <div class="offer-details">All networks</div>
+                    <button class="buy-btn" onclick="openModal('51 Minutes', '50')">Buy Now</button>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-name">51 Minutes (TILL MIDNIGHT) </div>
+                    <div class="offer-price">KSh 50</div>
+                    <div class="offer-details">All networks</div>
+                    <button class="buy-btn" onclick="openModal('51 Minutes', '50')">Buy Now</button>
+                </div>
+                  <div class="offer-card">
+                    <div class="offer-name">51 Minutes (TILL MIDNIGHT) </div>
+                    <div class="offer-price">KSh 50</div>
+                    <div class="offer-details">All networks</div>
+                    <button class="buy-btn" onclick="openModal('51 Minutes', '50')">Buy Now</button>
+                </div>
+                                <div class="offer-card">
+                    <div class="offer-name">51 Minutes (TILL MIDNIGHT) </div>
+                    <div class="offer-price">KSh 50</div>
+                    <div class="offer-details">All networks</div>
+                    <button class="buy-btn" onclick="openModal('51 Minutes', '50')">Buy Now</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="sms" class="tab-content" style="display:none;">
+            <h2>SMS Offers</h2>
+            <div class="offer-container">
+                <div class="offer-card">
+                    <div class="offer-name">200 SMS</div>
+                    <div class="offer-price">KSh 10</div>
+                    <div class="offer-details">Valid for 1 day</div>
+                    <button class="buy-btn" onclick="openModal('200 SMS', '10')">Buy Now</button>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-name">1000 SMS </div>
+                    <div class="offer-price">KSh 30</div>
+                    <div class="offer-details">Valid for 7 days</div>
+                    <button class="buy-btn" onclick="openModal('1000 SMS', '30')">Buy Now</button>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-name">1500 SMS</div>
+                    <div class="offer-price">KSh 100</div>
+                    <div class="offer-details">Valid for 30 days</div>
+                    <button class="buy-btn" onclick="openModal('1500 SMS', '100')">Buy Now</button>
+                </div>
+                 <div class="offer-card">
+                    <div class="offer-name">1500 SMS</div>
+                    <div class="offer-price">KSh 100</div>
+                    <div class="offer-details">Valid for 30 days</div>
+                    <button class="buy-btn" onclick="openModal('1500 SMS', '100')">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="purchaseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Purchase</h2>
+            <form id="purchase-form">
+                <input type="hidden" id="selected-offer">
+                <input type="hidden" id="selected-price">
+                
+                <div class="form-group">
+                    <label for="recipient-number">Recipient Phone Number:</label>
+                    <input type="tel" id="recipient-number" placeholder="e.g. 07.. & 01.. or 254.." required>
+                    
+                </div>
+                
+                <div class="form-group">
+                    <label for="payer-number">Paying Phone Number (M-Pesa):</label>
+                    <input type="tel" id="payer-number" placeholder="e.g. 07..& 01.. or 254.." required>
+                    
+                </div>
+                
+                <button type="button" class="submit-btn" onclick="processPayment()">Submit Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="paymentInstructions" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentInstructions()">&times;</span>
+            <h2>Payment Instructions</h2>
+            <div class="payment-instructions">
+                <p>Please complete your payment via M-Pesa:</p>
+                <ol>
+                    <li>Go to M-Pesa on your phone</li>
+                    <li>Select <strong>Lipa na M-Pesa</strong></li>
+                    <li>Select <strong>Buy Goods</strong></li>
+                    <li>Enter Till Number: 
+                        <span class="till-number" id="tillNumber">3499162</span>
+                        <button class="copy-btn" onclick="copyToClipboard('tillNumber')">Copy</button>
+                        <span class="success-message" id="tillCopySuccess">Copied!</span>
+                    </li>
+                    <li>Enter Amount: <strong id="payment-amount">KSh 0</strong></li>
+                    <li>Enter your M-Pesa PIN</li>
+                    <li>Confirm payment</li>
+                </ol>
+                <p>Your bundle/minutes/SMS will be activated immediately after payment confirmation.</p>
+                <p><em>Note: You can receive these offers even if you have Okoa Jahazi or Fuliza active.</em></p>
+            </div>
+            <button class="submit-btn" onclick="closePaymentInstructions()">I've Completed Payment</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Safaricom Bingwa Sokoni. All rights reserved.</p>
+        <p>
+            Customer Support: 
+            <a href="https://wa.me/254793969983?text=Hi%2C%20I%20need%20help%20with%20Bingwa%20Sokoni%20offers" 
+               style="color: white; text-decoration: underline;" 
+               target="_blank">
+                0793969983
+            </a> 
+            | 
+            Email: 
+            <a href="mailto:help.starnet1@gmail.com" 
+               style="color: white; text-decoration: underline;">
+                send us email
+            </a>
+        </p>
+    </footer>
+
+    <script>
+        function openTab(tabName) {
+            const tabs = document.getElementsByClassName('tab');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+                document.getElementById(tabs[i].getAttribute('onclick').split('\'')[1]).style.display = 'none';
+            }
+            
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabName).style.display = 'block';
+        }
+
+        function openModal(offer, price) {
+            document.getElementById('selected-offer').value = offer;
+            document.getElementById('selected-price').value = price;
+            document.getElementById('modal-title').textContent = `Purchase ${offer}`;
+            document.getElementById('purchaseModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('purchaseModal').style.display = 'none';
+        }
+
+        function closePaymentInstructions() {
+            document.getElementById('paymentInstructions').style.display = 'none';
+            document.getElementById('purchaseModal').style.display = 'none';
+            // Clear form
+            document.getElementById('purchase-form').reset();
+        }
+
+        function processPayment() {
+            const recipientNumber = document.getElementById('recipient-number').value.trim();
+            const payerNumber = document.getElementById('payer-number').value.trim();
+            const price = document.getElementById('selected-price').value;
+            
+            if (!recipientNumber || !payerNumber) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Remove any whitespace or special characters
+            const cleanRecipient = recipientNumber.replace(/[+\s\-]/g, '');
+            const cleanPayer = payerNumber.replace(/[+\s\-]/g, '');
+            
+            // Validate Kenyan phone numbers
+            // Formats allowed: 07XXXXXXXX (10 digits), 01XXXXXXXX (10 digits), 2547XXXXXXX (12 digits)
+            if (!/^(07\d{8}|01\d{8}|2547\d{7})$/.test(cleanRecipient) || 
+                !/^(07\d{8}|01\d{8}|2547\d{7})$/.test(cleanPayer)) {
+                alert('Please enter valid Kenyan phone numbers starting with 07, 01, or 254\n\n' +
+                      'Examples:\n' +
+                      '• 0712345678\n' +
+                      '• 0123456789\n' +
+                      '• 254712345678');
+                return;
+            }
+            
+            // Convert to 254 format if needed
+            let formattedRecipient = cleanRecipient;
+            if (cleanRecipient.startsWith('07') || cleanRecipient.startsWith('01')) {
+                formattedRecipient = '254' + cleanRecipient.substring(1);
+            }
+            
+            let formattedPayer = cleanPayer;
+            if (cleanPayer.startsWith('07') || cleanPayer.startsWith('01')) {
+                formattedPayer = '254' + cleanPayer.substring(1);
+            }
+            
+            // Ensure the final numbers are valid
+            if (formattedRecipient.length !== 12 || formattedPayer.length !== 12) {
+                alert('Please enter valid 10-digit Kenyan numbers (including 07 or 01 prefix)');
+                return;
+            }
+            
+            // Show payment instructions
+            document.getElementById('payment-amount').textContent = `KSh ${price}`;
+            document.getElementById('purchaseModal').style.display = 'none';
+            document.getElementById('paymentInstructions').style.display = 'block';
+            
+            // In a real implementation, you would send this data to your backend
+            console.log(`Processing payment:
+                Offer: ${document.getElementById('selected-offer').value}
+                Price: ${price}
+                Recipient: ${formattedRecipient}
+                Payer: ${formattedPayer}
+            `);
+        }
+
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const successMsg = document.getElementById(elementId + 'CopySuccess');
+                successMsg.style.display = 'inline';
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    const successMsg = document.getElementById(elementId + 'CopySuccess');
+                    successMsg.style.display = 'inline';
+                    setTimeout(() => {
+                        successMsg.style.display = 'none';
+                    }, 2000);
+                } catch (err) {
+                    console.error('Fallback copy failed: ', err);
+                }
+                document.body.removeChild(textArea);
+            });
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
