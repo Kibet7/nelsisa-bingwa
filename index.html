@@ -5,162 +5,383 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bingwa Sokoni - Mobile Bundles, Minutes & SMS</title>
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+        
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
         }
+        
         header {
-            background-color: #2c3e50;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
             color: white;
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .promo-banner {
-            background-color: #e74c3c;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
+        
         .logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
         }
+        
+        .promo-banner {
+            background: linear-gradient(to right, var(--accent-color), #c0392b);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
         .container {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 30px auto;
             padding: 0 20px;
         }
+        
         .tabs {
             display: flex;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ddd;
+            margin-bottom: 25px;
             flex-wrap: wrap;
+            gap: 5px;
         }
+        
         .tab {
-            padding: 10px 20px;
+            padding: 12px 25px;
             cursor: pointer;
-            background-color: #f1f1f1;
-            margin-right: 5px;
-            border-radius: 5px 5px 0 0;
+            background-color: var(--light-color);
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid #ddd;
         }
+        
+        .tab:hover {
+            background-color: #e0e0e0;
+        }
+        
         .tab.active {
-            background-color: #3498db;
+            background-color: var(--primary-color);
             color: white;
+            border-color: var(--primary-color);
         }
+        
         .offer-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
         }
+        
         .offer-card {
             background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
         }
+        
         .offer-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
+        
         .offer-name {
             font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-        .offer-price {
-            color: #e74c3c;
             font-size: 20px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            color: var(--secondary-color);
         }
+        
+        .offer-price {
+            color: var(--accent-color);
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
         .offer-details {
-            font-size: 14px;
-            color: #7f8c8d;
-            margin-bottom: 15px;
+            font-size: 15px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            min-height: 40px;
         }
+        
         .buy-btn {
-            background-color: #27ae60;
+            background: linear-gradient(to right, var(--success-color), #219653);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 20px;
+            border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
             width: 100%;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+        
         .buy-btn:hover {
-            background-color: #2ecc71;
+            background: linear-gradient(to right, #2ecc71, var(--success-color));
+            box-shadow: 0 3px 10px rgba(46, 204, 113, 0.3);
         }
+        
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(3px);
+            animation: fadeIn 0.3s ease;
         }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
         .modal-content {
             background-color: white;
-            margin: 15% auto;
-            padding: 20px;
-            border-radius: 8px;
-            width: 80%;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
             max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            animation: slideDown 0.4s ease;
         }
+        
+        @keyframes slideDown {
+            from { 
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to { 
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
         .close {
             color: #aaa;
-            float: right;
+            position: absolute;
+            right: 25px;
+            top: 15px;
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.2s;
         }
+        
+        .close:hover {
+            color: var(--accent-color);
+        }
+        
         .payment-instructions {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
+            background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 10px;
             margin-top: 20px;
-            border-left: 5px solid #3498db;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
         }
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-        .copy-btn {
-            background-color: #f39c12;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-            margin-left: 5px;
-        }
-        .copy-btn:hover {
-            background-color: #e67e22;
-        }
-        .till-number {
-            font-weight: bold;
-            color: #2c3e50;
-            background-color: #f1f1f1;
-            padding: 2px 5px;
-            border-radius: 3px;
+        
+        .payment-instructions h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            font-size: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
             display: inline-block;
         }
+        
+        .payment-instructions ol {
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        
+        .payment-instructions li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 10px;
+        }
+        
+        .payment-instructions li:before {
+            content: "";
+            position: absolute;
+            left: -15px;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+        
+        .payment-instructions strong {
+            color: var(--secondary-color);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--secondary-color), #1a252f);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+        
+        footer p {
+            margin: 10px 0;
+        }
+        
+        .copy-btn {
+            background-color: var(--warning-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-left: 8px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .copy-btn:hover {
+            background-color: #e67e22;
+            transform: translateY(-1px);
+        }
+        
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+        
+        .till-number {
+            font-weight: bold;
+            color: var(--secondary-color);
+            background-color: #f1f1f1;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            font-family: monospace;
+            font-size: 16px;
+            border: 1px dashed #ccc;
+        }
+        
         .success-message {
-            color: #27ae60;
-            font-size: 12px;
-            margin-left: 5px;
+            color: var(--success-color);
+            font-size: 13px;
+            margin-left: 8px;
             display: none;
+            font-weight: bold;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, var(--primary-color), #2980b9);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(to right, #2980b9, var(--primary-color));
+            box-shadow: 0 3px 10px rgba(41, 128, 185, 0.3);
+        }
+        
+        .payment-amount {
+            font-size: 18px;
+            color: var(--accent-color);
+            font-weight: bold;
+            background-color: #fef2f2;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .note-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--warning-color);
+            padding: 12px 15px;
+            margin-top: 20px;
+            border-radius: 0 4px 4px 0;
+            font-size: 14px;
+        }
+        
+        .note-box em {
+            color: var(--text-light);
+        }
+        
+        .mpesa-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #00B300;
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+            position: relative;
+        }
+        
+        .mpesa-icon:after {
+            content: "M";
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .offer-container {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+            
+            .modal-content {
+                margin: 20% auto;
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .tabs {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -187,34 +408,33 @@
                 <div class="offer-card">
                     <div class="offer-name">1 Hour bundle</div>
                     <div class="offer-price">KSh 19</div>
-                    <div class="offer-details">1GB</div>
+                    <div class="offer-details">1GB valid for 1 hour</div>
                     <button class="buy-btn" onclick="showPaymentInstructions('Hourly Bundle', '19')">Buy Now</button>
                 </div>
                 <div class="offer-card">
                     <div class="offer-name">24 Hours Bundle</div>
                     <div class="offer-price">KSh 20</div>
-                    <div class="offer-details">250MB  (1 day)</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('1 Day', '20')">Buy Now</button>
+                    <div class="offer-details">250MB valid for 24 hours</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('24 Hours Bundle', '20')">Buy Now</button>
                 </div>                
                 <div class="offer-card">
                     <div class="offer-name">3 Hour Bundle</div>
                     <div class="offer-price">KSh 50</div>
-                    <div class="offer-details">1.5GB </div>
+                    <div class="offer-details">1.5GB valid for 3 hours</div>
                     <button class="buy-btn" onclick="showPaymentInstructions('3 Hour Bundle', '50')">Buy Now</button>
                 </div>
                 <div class="offer-card">
                     <div class="offer-name">Weekly Bundle</div>
                     <div class="offer-price">KSh 49</div>
-                    <div class="offer-details">350MB </div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('weekly Bundle', '49')">Buy Now</button>
+                    <div class="offer-details">350MB valid for 7 days</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('Weekly Bundle', '49')">Buy Now</button>
                 </div>
-                    <div class="offer-card">
+                <div class="offer-card">
                     <div class="offer-name">Midnight Bundles</div>
                     <div class="offer-price">KSh 55</div>
-                    <div class="offer-details">1.25GB </div>
+                    <div class="offer-details">1.25GB valid from 11PM to 5AM</div>
                     <button class="buy-btn" onclick="showPaymentInstructions('Midnight Bundle', '55')">Buy Now</button>
                 </div>
-
             </div>
         </div>
 
@@ -222,30 +442,29 @@
             <h2>Voice Minutes</h2>
             <div class="offer-container">
                 <div class="offer-card">
-                    <div class="offer-name">51 Minutes (TILL MIDNIGHT) </div>
+                    <div class="offer-name">51 Minutes</div>
                     <div class="offer-price">KSh 50</div>
-                    <div class="offer-details">All networks</div>
+                    <div class="offer-details">All networks, valid until midnight</div>
                     <button class="buy-btn" onclick="showPaymentInstructions('51 Minutes', '50')">Buy Now</button>
                 </div>
                 <div class="offer-card">
-                    <div class="offer-name">51 Minutes (TILL MIDNIGHT) </div>
+                    <div class="offer-name">51 Minutes</div>
                     <div class="offer-price">KSh 50</div>
-                    <div class="offer-details">All networks</div>
+                    <div class="offer-details">All networks, valid until midnight</div>
                     <button class="buy-btn" onclick="showPaymentInstructions('51 Minutes', '50')">Buy Now</button>
                 </div>
-                  <div class="offer-card">
-                    <div class="offer-name">51 Minutes (TILL MIDNIGHT) </div>
+                <div class="offer-card">
+                    <div class="offer-name">51 Minutes</div>
                     <div class="offer-price">KSh 50</div>
-                    <div class="offer-details">All networks</div>
+                    <div class="offer-details">All networks, valid until midnight</div>
                     <button class="buy-btn" onclick="showPaymentInstructions('51 Minutes', '50')">Buy Now</button>
                 </div>
-                                <div class="offer-card">
-                    <div class="offer-name">51 Minutes (TILL MIDNIGHT) </div>
+                <div class="offer-card">
+                    <div class="offer-name">51 Minutes</div>
                     <div class="offer-price">KSh 50</div>
-                    <div class="offer-details">All networks</div>
+                    <div class="offer-details">All networks, valid until midnight</div>
                     <button class="buy-btn" onclick="showPaymentInstructions('51 Minutes', '50')">Buy Now</button>
                 </div>
-
             </div>
         </div>
 
@@ -259,7 +478,7 @@
                     <button class="buy-btn" onclick="showPaymentInstructions('200 SMS', '10')">Buy Now</button>
                 </div>
                 <div class="offer-card">
-                    <div class="offer-name">1000 SMS </div>
+                    <div class="offer-name">1000 SMS</div>
                     <div class="offer-price">KSh 30</div>
                     <div class="offer-details">Valid for 7 days</div>
                     <button class="buy-btn" onclick="showPaymentInstructions('1000 SMS', '30')">Buy Now</button>
@@ -270,11 +489,11 @@
                     <div class="offer-details">Valid for 30 days</div>
                     <button class="buy-btn" onclick="showPaymentInstructions('1500 SMS', '100')">Buy Now</button>
                 </div>
-                 <div class="offer-card">
-                    <div class="offer-name">1500 SMS</div>
-                    <div class="offer-price">KSh 100</div>
+                <div class="offer-card">
+                    <div class="offer-name">Unlimited SMS</div>
+                    <div class="offer-price">KSh 200</div>
                     <div class="offer-details">Valid for 30 days</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('1500 SMS', '100')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('Unlimited SMS', '200')">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -283,44 +502,66 @@
     <div id="paymentInstructions" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closePaymentInstructions()">&times;</span>
-            <h2>Payment Instructions</h2>
+            <h2 style="color: var(--secondary-color); margin-bottom: 20px;">Complete Your Purchase</h2>
+            
             <div class="payment-instructions">
-                <p>Please complete your payment via M-Pesa:</p>
+                <h3><span class="mpesa-icon"></span> M-Pesa Payment Instructions</h3>
+                <p style="margin-bottom: 20px;">To complete your purchase of <strong id="selected-offer-name"></strong>, please follow these steps:</p>
+                
                 <ol>
-                    <li>Go to M-Pesa on your phone</li>
+                    <li>Go to <strong>M-Pesa</strong> on your phone</li>
                     <li>Select <strong>Lipa na M-Pesa</strong></li>
                     <li>Select <strong>Buy Goods</strong></li>
                     <li>Enter Till Number: 
                         <span class="till-number" id="tillNumber">3499162</span>
-                        <button class="copy-btn" onclick="copyToClipboard('tillNumber')">Copy</button>
+                        <button class="copy-btn" onclick="copyToClipboard('tillNumber')">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy
+                        </button>
                         <span class="success-message" id="tillCopySuccess">Copied!</span>
                     </li>
-                    <li>Enter Amount: <strong id="payment-amount">KSh 0</strong></li>
-                    <li>Enter your M-Pesa PIN</li>
-                    <li>Confirm payment</li>
+                    <li>Enter Amount: <span class="payment-amount" id="payment-amount">KSh 0</span></li>
+                    <li>Enter your <strong>M-Pesa PIN</strong></li>
+                    <li>Confirm payment and wait for confirmation</li>
                 </ol>
-                <p>Your bundle/minutes/SMS will be activated immediately after payment confirmation.</p>
-                <p><em>Note: You can receive these offers even if you have Okoa Jahazi or Fuliza active.</em></p>
+                
+                <div class="note-box">
+                    <p><strong>Important:</strong> Your <span id="offer-type"></span> will be activated automatically within 2 minutes after successful payment.</p>
+                    <em>Note: These offers work even if you have Okoa Jahazi or Fuliza active on your line.</em>
+                </div>
             </div>
-            <button class="submit-btn" onclick="closePaymentInstructions()">I've Completed Payment</button>
+            
+            <button class="submit-btn" onclick="closePaymentInstructions()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                I've Completed Payment
+            </button>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Safaricom Bingwa Sokoni. All rights reserved.</p>
+        <p>&copy; 2025 Bingwa Sokoni. All rights reserved.</p>
         <p>
             Customer Support: 
             <a href="https://wa.me/254793969983?text=Hi%2C%20I%20need%20help%20with%20Bingwa%20Sokoni%20offers" 
                style="color: white; text-decoration: underline;" 
                target="_blank">
-                0793969983
+                WhatsApp: 0793969983
             </a> 
             | 
             Email: 
             <a href="mailto:help.starnet1@gmail.com" 
                style="color: white; text-decoration: underline;">
-                send us email
+                help.starnet1@gmail.com
             </a>
+        </p>
+        <p style="margin-top: 15px; font-size: 14px; opacity: 0.8;">
+            Bingwa Sokoni is not affiliated with Safaricom PLC. All trademarks are property of their respective owners.
         </p>
     </footer>
 
@@ -338,6 +579,13 @@
 
         function showPaymentInstructions(offer, price) {
             document.getElementById('payment-amount').textContent = `KSh ${price}`;
+            document.getElementById('selected-offer-name').textContent = offer;
+            
+            // Determine offer type for the note
+            const offerType = offer.includes('SMS') ? 'SMS bundle' : 
+                            offer.includes('Minute') ? 'airtime minutes' : 'data bundle';
+            document.getElementById('offer-type').textContent = offerType;
+            
             document.getElementById('paymentInstructions').style.display = 'block';
             
             // In a real implementation, you would send the offer and price to your backend
@@ -387,4 +635,4 @@
         }
     </script>
 </body>
-    </html>
+                        </html>
