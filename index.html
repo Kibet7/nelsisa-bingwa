@@ -121,34 +121,6 @@
             font-weight: bold;
             cursor: pointer;
         }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .submit-btn {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-        }
-        .submit-btn:hover {
-            background-color: #2980b9;
-        }
         .payment-instructions {
             background-color: #f9f9f9;
             padding: 20px;
@@ -216,31 +188,31 @@
                     <div class="offer-name">1 Hour bundle</div>
                     <div class="offer-price">KSh 19</div>
                     <div class="offer-details">1GB</div>
-                    <button class="buy-btn" onclick="openModal('Hourly Bundle', '19')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('Hourly Bundle', '19')">Buy Now</button>
                 </div>
                 <div class="offer-card">
                     <div class="offer-name">24 Hours Bundle</div>
                     <div class="offer-price">KSh 20</div>
                     <div class="offer-details">250MB  (1 day)</div>
-                    <button class="buy-btn" onclick="openModal('1 Day', '20')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('1 Day', '20')">Buy Now</button>
                 </div>                
                 <div class="offer-card">
                     <div class="offer-name">3 Hour Bundle</div>
                     <div class="offer-price">KSh 50</div>
                     <div class="offer-details">1.5GB </div>
-                    <button class="buy-btn" onclick="openModal('3 Hour Bundle', '50')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('3 Hour Bundle', '50')">Buy Now</button>
                 </div>
                 <div class="offer-card">
                     <div class="offer-name">Weekly Bundle</div>
                     <div class="offer-price">KSh 49</div>
                     <div class="offer-details">350MB </div>
-                    <button class="buy-btn" onclick="openModal('weekly Bundle', '49')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('weekly Bundle', '49')">Buy Now</button>
                 </div>
                     <div class="offer-card">
                     <div class="offer-name">Midnight Bundles</div>
                     <div class="offer-price">KSh 55</div>
                     <div class="offer-details">1.25GB </div>
-                    <button class="buy-btn" onclick="openModal('Midnight Bundle', '55')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('Midnight Bundle', '55')">Buy Now</button>
                 </div>
 
             </div>
@@ -253,25 +225,25 @@
                     <div class="offer-name">51 Minutes (TILL MIDNIGHT) </div>
                     <div class="offer-price">KSh 50</div>
                     <div class="offer-details">All networks</div>
-                    <button class="buy-btn" onclick="openModal('51 Minutes', '50')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('51 Minutes', '50')">Buy Now</button>
                 </div>
                 <div class="offer-card">
                     <div class="offer-name">51 Minutes (TILL MIDNIGHT) </div>
                     <div class="offer-price">KSh 50</div>
                     <div class="offer-details">All networks</div>
-                    <button class="buy-btn" onclick="openModal('51 Minutes', '50')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('51 Minutes', '50')">Buy Now</button>
                 </div>
                   <div class="offer-card">
                     <div class="offer-name">51 Minutes (TILL MIDNIGHT) </div>
                     <div class="offer-price">KSh 50</div>
                     <div class="offer-details">All networks</div>
-                    <button class="buy-btn" onclick="openModal('51 Minutes', '50')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('51 Minutes', '50')">Buy Now</button>
                 </div>
                                 <div class="offer-card">
                     <div class="offer-name">51 Minutes (TILL MIDNIGHT) </div>
                     <div class="offer-price">KSh 50</div>
                     <div class="offer-details">All networks</div>
-                    <button class="buy-btn" onclick="openModal('51 Minutes', '50')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('51 Minutes', '50')">Buy Now</button>
                 </div>
 
             </div>
@@ -284,52 +256,27 @@
                     <div class="offer-name">200 SMS</div>
                     <div class="offer-price">KSh 10</div>
                     <div class="offer-details">Valid for 1 day</div>
-                    <button class="buy-btn" onclick="openModal('200 SMS', '10')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('200 SMS', '10')">Buy Now</button>
                 </div>
                 <div class="offer-card">
                     <div class="offer-name">1000 SMS </div>
                     <div class="offer-price">KSh 30</div>
                     <div class="offer-details">Valid for 7 days</div>
-                    <button class="buy-btn" onclick="openModal('1000 SMS', '30')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('1000 SMS', '30')">Buy Now</button>
                 </div>
                 <div class="offer-card">
                     <div class="offer-name">1500 SMS</div>
                     <div class="offer-price">KSh 100</div>
                     <div class="offer-details">Valid for 30 days</div>
-                    <button class="buy-btn" onclick="openModal('1500 SMS', '100')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('1500 SMS', '100')">Buy Now</button>
                 </div>
                  <div class="offer-card">
                     <div class="offer-name">1500 SMS</div>
                     <div class="offer-price">KSh 100</div>
                     <div class="offer-details">Valid for 30 days</div>
-                    <button class="buy-btn" onclick="openModal('1500 SMS', '100')">Buy Now</button>
+                    <button class="buy-btn" onclick="showPaymentInstructions('1500 SMS', '100')">Buy Now</button>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div id="purchaseModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modal-title">Purchase</h2>
-            <form id="purchase-form">
-                <input type="hidden" id="selected-offer">
-                <input type="hidden" id="selected-price">
-                
-                <div class="form-group">
-                    <label for="recipient-number">Recipient Phone Number:</label>
-                    <input type="tel" id="recipient-number" placeholder="e.g. 07.. & 01.. or 254.." required>
-                    
-                </div>
-                
-                <div class="form-group">
-                    <label for="payer-number">Paying Phone Number (M-Pesa):</label>
-                    <input type="tel" id="payer-number" placeholder="e.g. 07..& 01.. or 254.." required>
-                    
-                </div>
-                
-                <button type="button" class="submit-btn" onclick="processPayment()">Submit Payment</button>
-            </form>
         </div>
     </div>
 
@@ -389,79 +336,16 @@
             document.getElementById(tabName).style.display = 'block';
         }
 
-        function openModal(offer, price) {
-            document.getElementById('selected-offer').value = offer;
-            document.getElementById('selected-price').value = price;
-            document.getElementById('modal-title').textContent = `Purchase ${offer}`;
-            document.getElementById('purchaseModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('purchaseModal').style.display = 'none';
+        function showPaymentInstructions(offer, price) {
+            document.getElementById('payment-amount').textContent = `KSh ${price}`;
+            document.getElementById('paymentInstructions').style.display = 'block';
+            
+            // In a real implementation, you would send the offer and price to your backend
+            console.log(`Processing payment for ${offer} at KSh ${price}`);
         }
 
         function closePaymentInstructions() {
             document.getElementById('paymentInstructions').style.display = 'none';
-            document.getElementById('purchaseModal').style.display = 'none';
-            // Clear form
-            document.getElementById('purchase-form').reset();
-        }
-
-        function processPayment() {
-            const recipientNumber = document.getElementById('recipient-number').value.trim();
-            const payerNumber = document.getElementById('payer-number').value.trim();
-            const price = document.getElementById('selected-price').value;
-            
-            if (!recipientNumber || !payerNumber) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            // Remove any whitespace or special characters
-            const cleanRecipient = recipientNumber.replace(/[+\s\-]/g, '');
-            const cleanPayer = payerNumber.replace(/[+\s\-]/g, '');
-            
-            // Validate Kenyan phone numbers
-            // Formats allowed: 07XXXXXXXX (10 digits), 01XXXXXXXX (10 digits), 2547XXXXXXX (12 digits)
-            if (!/^(07\d{8}|01\d{8}|2547\d{7})$/.test(cleanRecipient) || 
-                !/^(07\d{8}|01\d{8}|2547\d{7})$/.test(cleanPayer)) {
-                alert('Please enter valid Kenyan phone numbers starting with 07, 01, or 254\n\n' +
-                      'Examples:\n' +
-                      '• 0712345678\n' +
-                      '• 0123456789\n' +
-                      '• 254712345678');
-                return;
-            }
-            
-            // Convert to 254 format if needed
-            let formattedRecipient = cleanRecipient;
-            if (cleanRecipient.startsWith('07') || cleanRecipient.startsWith('01')) {
-                formattedRecipient = '254' + cleanRecipient.substring(1);
-            }
-            
-            let formattedPayer = cleanPayer;
-            if (cleanPayer.startsWith('07') || cleanPayer.startsWith('01')) {
-                formattedPayer = '254' + cleanPayer.substring(1);
-            }
-            
-            // Ensure the final numbers are valid
-            if (formattedRecipient.length !== 12 || formattedPayer.length !== 12) {
-                alert('Please enter valid 10-digit Kenyan numbers (including 07 or 01 prefix)');
-                return;
-            }
-            
-            // Show payment instructions
-            document.getElementById('payment-amount').textContent = `KSh ${price}`;
-            document.getElementById('purchaseModal').style.display = 'none';
-            document.getElementById('paymentInstructions').style.display = 'block';
-            
-            // In a real implementation, you would send this data to your backend
-            console.log(`Processing payment:
-                Offer: ${document.getElementById('selected-offer').value}
-                Price: ${price}
-                Recipient: ${formattedRecipient}
-                Payer: ${formattedPayer}
-            `);
         }
 
         function copyToClipboard(elementId) {
@@ -495,7 +379,7 @@
             });
         }
 
-        // Close modals when clicking outside
+        // Close modal when clicking outside
         window.onclick = function(event) {
             if (event.target.className === 'modal') {
                 event.target.style.display = 'none';
@@ -503,4 +387,4 @@
         }
     </script>
 </body>
-</html>
+    </html>
