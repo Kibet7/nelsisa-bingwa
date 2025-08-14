@@ -431,6 +431,7 @@
         <div class="tabs">
             <div class="tab active" onclick="openTab('data')">Data Bundles</div>
             <div class="tab" onclick="openTab('minutes')">Voice Minutes</div>
+            <div class="tab" onclick="openTab('sms')">SMS Offers</div>
         </div>
 
         <div id="data" class="tab-content">
@@ -517,6 +518,32 @@
                 </div>
             </div>
         </div>
+
+        <div id="sms" class="tab-content" style="display:none;">
+            <h2>SMS Offers</h2>
+            <div class="offer-container">
+                <div class="offer-card">
+                    <div class="offer-name">20 SMS</div>
+                    <div class="offer-price">KSh 5</div>
+                    <div class="offer-details">20 SMS valid for 1 day</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('20 SMS for 1 Day', '5')">Buy Now</button>
+                </div>
+                
+                <div class="offer-card">
+                    <div class="offer-name">200 SMS</div>
+                    <div class="offer-price">KSh 10</div>
+                    <div class="offer-details">200 SMS valid for 1 day</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('200 SMS for 1 Day', '10')">Buy Now</button>
+                </div>
+                
+                <div class="offer-card">
+                    <div class="offer-name">1000 SMS</div>
+                    <div class="offer-price">KSh 30</div>
+                    <div class="offer-details">1000 SMS valid for 1 week</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('1000 SMS for 1 Week', '30')">Buy Now</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="paymentInstructions" class="modal">
@@ -575,9 +602,9 @@
             </a> 
             | 
             Email: 
-            <a href="mailto:help.bingwa.com" 
+            <a href="mailto:help.starnet1@gmail.com" 
                style="color: white; text-decoration: underline;">
-                email us
+                help.starnet1@gmail.com
             </a>
         </p>
         <p style="margin-top: 15px; font-size: 14px; opacity: 0.8;">
@@ -602,7 +629,8 @@
             document.getElementById('selected-offer-name').textContent = offer;
             
             // Determine offer type for the note
-            const offerType = offer.includes('Minute') ? 'airtime minutes' : 'data bundle';
+            const offerType = offer.includes('Minute') ? 'airtime minutes' : 
+                             offer.includes('SMS') ? 'SMS bundle' : 'data bundle';
             document.getElementById('offer-type').textContent = offerType;
             
             document.getElementById('paymentInstructions').style.display = 'block';
