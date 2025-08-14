@@ -98,6 +98,7 @@
             text-align: center;
             transition: all 0.3s ease;
             border: 1px solid #eee;
+            position: relative;
         }
         
         .offer-card:hover {
@@ -368,6 +369,37 @@
             font-size: 12px;
         }
         
+        .offer-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .once-per-day {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .dynamic-offer {
+            background-color: #27ae60;
+            color: white;
+        }
+        
+        .section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            margin: 20px 0 10px;
+            border-radius: 8px;
+            font-size: 18px;
+            text-align: center;
+        }
+        
         @media (max-width: 768px) {
             .offer-container {
                 grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -399,48 +431,70 @@
         <div class="tabs">
             <div class="tab active" onclick="openTab('data')">Data Bundles</div>
             <div class="tab" onclick="openTab('minutes')">Voice Minutes</div>
-            <div class="tab" onclick="openTab('sms')">SMS Offers</div>
         </div>
 
         <div id="data" class="tab-content">
             <h2>Data Bundles</h2>
+            
+            <div class="section-title">PURCHASE ONCE PER DAY OFFERS</div>
             <div class="offer-container">
                 <div class="offer-card">
-                    <div class="offer-name">1 Hour bundle</div>
+                    <div class="offer-badge once-per-day">Once/Day</div>
+                    <div class="offer-name">1GB for 1 Hour</div>
                     <div class="offer-price">KSh 19</div>
-                    <div class="offer-details">1GB valid for 1 hour</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('Hourly Bundle', '19')">Buy Now</button>
+                    <div class="offer-details">1GB valid for 1 hour (Limit 1 purchase per day)</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('1GB for 1 Hour', '19')">Buy Now</button>
                 </div>
+                
                 <div class="offer-card">
-                    <div class="offer-name">24 Hours Bundle</div>
+                    <div class="offer-badge once-per-day">Once/Day</div>
+                    <div class="offer-name">250MB for 24 Hours</div>
                     <div class="offer-price">KSh 20</div>
-                    <div class="offer-details">250MB valid for 24 hours</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('24 Hours Bundle', '20')">Buy Now</button>
-                </div> 
-               
+                    <div class="offer-details">250MB valid for 24 hours (Limit 1 purchase per day)</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('250MB for 24 Hours', '20')">Buy Now</button>
+                </div>
+                
                 <div class="offer-card">
-                    <div class="offer-name">3 Hour Bundle</div>
+                    <div class="offer-badge once-per-day">Once/Day</div>
+                    <div class="offer-name">1.5GB for 3 Hours</div>
                     <div class="offer-price">KSh 50</div>
-                    <div class="offer-details">1.5GB valid for 3 hours</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('3 Hour Bundle', '50')">Buy Now</button>
+                    <div class="offer-details">1.5GB valid for 3 hours (Limit 1 purchase per day)</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('1.5GB for 3 Hours', '50')">Buy Now</button>
                 </div>
+                
                 <div class="offer-card">
-                    <div class="offer-name">Weekly Bundle</div>
-                    <div class="offer-price">KSh 49</div>
-                    <div class="offer-details">350MB valid for 7 days</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('Weekly Bundle', '49')">Buy Now</button>
-                </div>
-                <div class="offer-card">
-                    <div class="offer-name">Midnight Bundles</div>
+                    <div class="offer-badge once-per-day">Once/Day</div>
+                    <div class="offer-name">1.25GB Midnight</div>
                     <div class="offer-price">KSh 55</div>
-                    <div class="offer-details">1.25GB valid from 11PM to 5AM</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('Midnight Bundle', '55')">Buy Now</button>
+                    <div class="offer-details">1.25GB valid from 11PM to 5AM (Limit 1 purchase per day)</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('1.25GB Midnight', '55')">Buy Now</button>
                 </div>
-                 <div class="offer-card">
-                    <div class="offer-name">24 Hours Bundle</div>
+                
+                <div class="offer-card">
+                    <div class="offer-badge once-per-day">Once/Day</div>
+                    <div class="offer-name">1GB for 24 Hours</div>
                     <div class="offer-price">KSh 99</div>
-                    <div class="offer-details">1GB valid for 24 hours</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('24 Hours Bundle', '99')">Buy Now</button>
+                    <div class="offer-details">1GB valid for 24 hours (Limit 1 purchase per day)</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('1GB for 24 Hours', '99')">Buy Now</button>
+                </div>
+            </div>
+            
+            <div class="section-title">DYNAMIC OFFERS (PURCHASE MULTIPLE TIMES)</div>
+            <div class="offer-container">
+                <div class="offer-card">
+                    <div class="offer-badge dynamic-offer">Dynamic</div>
+                    <div class="offer-name">1GB for 1 Hour</div>
+                    <div class="offer-price">KSh 21</div>
+                    <div class="offer-details">1GB valid for 1 hour (Multiple purchases allowed)</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('1GB for 1 Hour (Dynamic)', '21')">Buy Now</button>
+                </div>
+                
+                <div class="offer-card">
+                    <div class="offer-badge dynamic-offer">Dynamic</div>
+                    <div class="offer-name">1.5GB for 3 Hours</div>
+                    <div class="offer-price">KSh 53</div>
+                    <div class="offer-details">1.5GB valid for 3 hours (Multiple purchases allowed)</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('1.5GB for 3 Hours (Dynamic)', '53')">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -449,58 +503,17 @@
             <h2>Voice Minutes</h2>
             <div class="offer-container">
                 <div class="offer-card">
-                    <div class="offer-name">51 Minutes</div>
-                    <div class="offer-price">KSh 50</div>
-                    <div class="offer-details">All networks, valid until midnight</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('51 Minutes', '50')">Buy Now</button>
+                    <div class="offer-name">45 Minutes</div>
+                    <div class="offer-price">KSh 22</div>
+                    <div class="offer-details">45 minutes valid for 3 hours</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('45 Minutes for 3 Hours', '22')">Buy Now</button>
                 </div>
+                
                 <div class="offer-card">
-                    <div class="offer-name">51 Minutes</div>
-                    <div class="offer-price">KSh 50</div>
-                    <div class="offer-details">All networks, valid until midnight</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('51 Minutes', '50')">Buy Now</button>
-                </div>
-                <div class="offer-card">
-                    <div class="offer-name">51 Minutes</div>
-                    <div class="offer-price">KSh 50</div>
-                    <div class="offer-details">All networks, valid until midnight</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('51 Minutes', '50')">Buy Now</button>
-                </div>
-                <div class="offer-card">
-                    <div class="offer-name">51 Minutes</div>
-                    <div class="offer-price">KSh 50</div>
-                    <div class="offer-details">All networks, valid until midnight</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('51 Minutes', '50')">Buy Now</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="sms" class="tab-content" style="display:none;">
-            <h2>SMS Offers</h2>
-            <div class="offer-container">
-                <div class="offer-card">
-                    <div class="offer-name">200 SMS</div>
-                    <div class="offer-price">KSh 10</div>
-                    <div class="offer-details">Valid for 1 day</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('200 SMS', '10')">Buy Now</button>
-                </div>
-                <div class="offer-card">
-                    <div class="offer-name">1000 SMS</div>
-                    <div class="offer-price">KSh 30</div>
-                    <div class="offer-details">Valid for 7 days</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('1000 SMS', '30')">Buy Now</button>
-                </div>
-                <div class="offer-card">
-                    <div class="offer-name">1500 SMS</div>
-                    <div class="offer-price">KSh 100</div>
-                    <div class="offer-details">Valid for 30 days</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('1500 SMS', '100')">Buy Now</button>
-                </div>
-                <div class="offer-card">
-                    <div class="offer-name">1500 SMS</div>
-                    <div class="offer-price">KSh 100</div>
-                    <div class="offer-details">Valid for 30 days</div>
-                    <button class="buy-btn" onclick="showPaymentInstructions('1500 SMS', '100')">Buy Now</button>
+                    <div class="offer-name">50 Minutes</div>
+                    <div class="offer-price">KSh 51</div>
+                    <div class="offer-details">50 minutes valid until midnight</div>
+                    <button class="buy-btn" onclick="showPaymentInstructions('50 Minutes Until Midnight', '51')">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -562,9 +575,9 @@
             </a> 
             | 
             Email: 
-            <a href="mailto:help.starnet1@gmail.com" 
+            <a href="mailto:help.bingwa.com" 
                style="color: white; text-decoration: underline;">
-         email us 
+                email us
             </a>
         </p>
         <p style="margin-top: 15px; font-size: 14px; opacity: 0.8;">
@@ -589,8 +602,7 @@
             document.getElementById('selected-offer-name').textContent = offer;
             
             // Determine offer type for the note
-            const offerType = offer.includes('SMS') ? 'SMS bundle' : 
-                            offer.includes('Minute') ? 'airtime minutes' : 'data bundle';
+            const offerType = offer.includes('Minute') ? 'airtime minutes' : 'data bundle';
             document.getElementById('offer-type').textContent = offerType;
             
             document.getElementById('paymentInstructions').style.display = 'block';
@@ -642,4 +654,4 @@
         }
     </script>
 </body>
-                        </html>
+</html>
